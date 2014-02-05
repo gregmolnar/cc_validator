@@ -1,4 +1,4 @@
-require_relative 'credit_card'
+require './lib/credit_card'
 puts "Enter card number: "
 while line = STDIN.gets
   break if line.chomp == 'quit'
