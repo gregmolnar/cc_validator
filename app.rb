@@ -1,6 +1,8 @@
-require 'credit_card'
-puts "Enter card number : "
+require_relative 'credit_card'
+puts "Enter card number: "
 while line = STDIN.gets
   break if line.chomp == 'quit'
-  puts "Enter another card number or 'quit' to exit : "
+  card = CreditCard.new(line)
+  puts "#{card.type}: #{card.number} (#{(card.valid?) ? 'valid' : 'invalid'})"
+  puts "Enter another card number or 'quit' to exit: "
 end
