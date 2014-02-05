@@ -27,4 +27,11 @@ class CreditCardTest < MiniTest::Unit::TestCase
 			assert_equal card[:type], c.type
 		end
 	end
+
+	def test_it_validates_card
+		@cards.each do |card|
+			c = CreditCard.new(card[:number])
+			assert_equal card[:valid], c.valid?
+		end
+	end
 end
