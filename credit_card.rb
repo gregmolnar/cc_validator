@@ -3,19 +3,18 @@ class CreditCard
 
   def initialize(number)
     self.number = number.gsub(/\s/, '')
-    #   AMEX       | 34 or 37    | 15            |
-    # +------------+-------------+---------------+
-    # | Discover   | 6011        | 16            |
-    # +------------+-------------+---------------+
-    # | MasterCard | 51-55       | 16            |
-    # +------------+-------------+---------------+
-    # | Visa       | 4           | 13 or 16
     @types = {
-      amex: /^3[47]\d{13}$/
+      'AMEX' => /^3[47]\d{13}$/,
+      'Discover' => /^6011\d{12}$/,
+      'VISA' => /^4\d{12}|4\d{15}$/,
+      'MasterCard' => /^5[1-5]\d{14}$/,
     }
   end
 
   def type
-
+    @types.each do |type, rule|
+      return type if self.number =~ rule
+    end
+    'Unknown'
   end
 end

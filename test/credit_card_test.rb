@@ -21,10 +21,10 @@ class CreditCardTest < MiniTest::Unit::TestCase
 		assert_equal card.number, number.gsub(/\s/, '')
 	end
 
-	def test_it_extracts_type
+	def test_it_extracts_the_type
 		@cards.each do |card|
 			c = CreditCard.new(card[:number])
-			assert_equal c.type, card[:type]
+			assert_equal card[:type], c.type
 		end
 	end
 end
